@@ -1,0 +1,21 @@
+
+int[] array = new array[7]; 
+double[][] array = new array[7][7];
+int[] array = {1,2,3,4};
+
+mod = remainder
+- 6 % 8 = 6
+- 8 % 8 = 0
+- 9 % 8 = 1
+- 10 % 2 = 0
+- 11 % 2 = 1
+
+division = how many times can it go in
+- 12 / 4 = 3
+- 12 / 3 = 4
+- 12 / 5 = 2 
+- 12 / 7 = 1
+
+public static [type] [name] ([type] [name])
+
+j++ vs ++J

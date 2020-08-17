@@ -1,0 +1,32 @@
+Project #2
+
+MakeVariableList()
+1) do not make a new list
+Gives you an empty list that contains vars and another list with arrays
+
+So basically you go through the expressions, and check if its part of the array then you put it in the array list or if its an elemenet of the variables and you put it in the list
+
+Evaluate()
+1) Get expression with no ()[]
+2) do an operation 
+3) replace the expression with the new value with operation
+
+when you see a right parenthesis we have the index of the right parenthesis then you pop the left parenthesis. this means that the index to the index has no parenthesis
+
+everytime we see a parenthesis we create a stack, use index to store the indexes of the parenthesis 
+
+StringTokenizer string = new StringTokenizer(" .... ", "+/+-", true)
+string = string.replace("....")
+
+to evaluate you create two stacks, one stack with numbers, one stack with operations
+put values into the stack but when you see either * or / you then evalaute the numbers until you reach the next + or -
+adter that you put the evaluated number that you got by * and /.
+
+but the stack with the numbers will have a wrong starting number
+you do
+temp = 0;
+temp = temp + the number;
+answer = answer + temp; 
+
+if the operation is - then you just change themp to 
+temp = temp - the number; 
