@@ -1,0 +1,54 @@
+public static <T> boolean isomorphic(BTNode<T> T1, BTNode<T> T2) 
+{
+    if(T1 == null && T2 == null)
+        return true;
+    if(T1 == null || T2 == null)
+        return false;
+    if(T1.data != T2.data)
+        return false;
+    
+    return ismorphic(T1.left, T2.left) || ismorphic(T1.right, T2.right)
+}
+
+public class BTNode<T> 
+{
+    T data;
+    BTNode<T> left, right;
+
+    BTNode(T data, BTNode<T> left, BTNode<T> right) 
+    {
+        this.data = data;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+
+public class BTNode<T> 
+{
+    T data;
+    BTNode<T> left, right, parent;    
+}
+
+Given a pointer to a node x, find and return the node that would be x's parent in the general tree:
+public static <T> BTNode<T> genTreeParent(BTNode<T> x) 
+{
+    BTNode<T> holder = x.parent;
+
+    if(x == null)
+        return null;
+    
+    if(holder.left == x)
+        return holder;
+    else
+        genTreeParent(x.parent);
+
+        while(x.parent != null)
+        {
+            if(x == x.parent.left)
+                return x.parent;
+            x = x.parent;
+        }
+        return null;
+
+}

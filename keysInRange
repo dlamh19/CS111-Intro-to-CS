@@ -1,0 +1,45 @@
+
+    // Accumulates, in a given array list, all entries in a BST whose keys are in a given range,
+    // including both ends of the range - i.e. all entries x such that min <= x <= max. 
+    // The accumulation array list, result, will be filled with node data entries that make the cut. 
+    // The array list is already created (initially empty) when this method is first called.
+public static <T extends Comparable<T>> void keysInRange(BSTNode<T> root, T min, T max, ArrayList<T> result) 
+{
+	if(root == null)
+		return null;
+	if(min <= root.data && root.data <= max)
+	{
+		result.add(root.data);
+		keysInRange(root.left, min, max, result);
+		keysInRange(root.right, min, max, result);
+		}
+	else if(root.data < min)
+	{
+		keysInRange(root.right, min, max, result);
+	}
+	else //root.data > max
+		keysInRange(root.left, min, max, result);
+}
+
+
+public static <T extends Comparable<T>> void fillHeights(BSTNode<T> root) 
+{
+	if(root == null)
+		return;
+	fillHeights(root.left);
+	fillHeights(root.right);
+
+	root.height = -1;
+
+	if(root.left == null)
+		root.height = root.right;
+	if(root.right == null)
+		root.height = root.left;
+	else
+		root.height = Math.max(root.left.height, root.right.height);
+
+	root.height++;
+.}
+
+
+

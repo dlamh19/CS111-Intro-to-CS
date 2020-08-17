@@ -1,0 +1,398 @@
+public void printGreater(int[] H, int n, int k) 
+{
+	recursivePrintGreat(H, n, k, 0);
+}
+
+public void recursivePrintGreater(int[] H, int n, int k, int x) 
+{
+	if(x >= n)		//out of bounds
+		return;
+
+	if(h[k] > k)
+		sop(h[k]);
+		recursivePrintGreat(H, n, k, 2x+1);
+		recursivePrintGreat(H, n, k, 2x+2);
+}
+
+public class Neighbor
+{
+    public int vertex;
+    public Neighbor next;
+}
+
+public class Graph 
+{
+    Neighbor[] adjLists;  // adjacency linked lists for all vertices
+
+    // returns true if there is a path from v to w, false otherwise
+    public boolean hasPath(int v, int w) 
+    {
+
+    	if(v == w)
+    		return false;
+
+    	boolean[] visited = new boolean[adjLists.length];
+
+    	Arrays.fill(visited,false);
+
+    	return dfsPath(v, w, visited);
+    }
+
+    public static boolean dfsPath(int start, int end, boolean[] visited)
+    {
+        visited[start] = true;
+
+        for (Neighbor ptr = adjlists[start]; ptr != null; ptr = ptr.next) 
+        {
+        	if(!visited[ptr.vertex])
+        		visited[ptr.vertex] = true;
+
+        	dfsPath(ptr.vertex, end, visited);
+        }
+        if(visited[end] == true)
+        	return true;
+        else 
+        	return false;
+
+
+    }
+}
+
+
+
+
+
+
+
+
+________________________________________________________________________________
+PS12 #1
+class Neighbor
+{
+    public int vertex;
+    public Neighbor next;
+}
+
+class Vertex 
+{
+    String name;
+    Neighbor neighbors; // adjacency linked lists for all vertices
+}
+
+public class Queue<T> 
+{
+    public Queue() {...}
+    public void enqueue(T item) {...}
+    public T dequeue() throws NoSuchElementException {...}
+    public boolean isEmpty() {...}
+}
+
+public class Graph 
+{
+   Vertex[] vertices;
+
+   // returns an array of indegrees of the vertices, i.e. return[i] is the
+   // number of edges that are directed IN TO vertex i
+
+   public int[] indegrees() 
+   {
+   		int[] array = new array[vertices.length];
+   		Arrays.fills(array, 0);
+
+   		for(int i = 0; i < vertices.length; i++)
+   			for(Neighbor ptr = vertices[i].neighbors; ptr != null; ptr = ptr.next)
+   				array[ptr.vertex] = array[ptr.vertex] + 1;
+
+   		return array;
+   }
+}
+
+BigO = o(n + e + e) => O(N + E)
+N vertices in List
+E edges to traverse
+E edges to acess
+_________________________________________________________________________________
+
+PS12 #2
+// returns an array with the names of vertices in topological sequence
+public String[] topsort() 
+{
+	int[] indeg = indegrees(); 		//indegrees method alreay implemented
+	String[] topSort = indeg.length;
+	int[] topNum = 0;
+
+	Queue queue = new Queue();
+
+	for(int i = 0; i < array.length; i++)
+	{
+		if(indeg == 0)
+		{
+			topSort[topNum] = vertices[i].name;
+			topNum++;
+			queue.enqueue[i];
+		}
+	}
+
+	while(!queue.isEmpty)
+	{
+		int deq = queue.dequeue();
+
+		for(Neighbor ptr = vertices[deq].neighbors; ptr != null; ptr = ptr.next)
+		{
+			indeg[ptr.vertex]--;
+
+			if(indeg[ptr.vertex] == 0)
+			{
+				topSort[topNum] = vertices[ptr.vertex].name
+				topNum++;
+				queue.enqueue(ptr.vertex);
+			}
+		}
+	}
+	return topSort;
+}
+________________________________________
+
+PS12 #3
+
+class Vertex 
+{
+    String name;
+    Neighbor neighbors; // adjacency linked lists for all vertices
+}
+
+public class Graph 
+{
+    Vertex[] vertices;
+
+   	// performs a recursive dfs starting at vertex v
+    private void dfs(int v, boolean[] visited) 
+    {
+        // already implemented
+    }
+
+    public boolean stronglyConnected() 
+    {
+    	boolean[] dfsVisited = new boolean[vertices.length];
+    	boolean holder = true;
+
+
+    	for(int i = 0; i < vertices.lengthl i++)
+    	{
+    	    boolean[] visited = new boolean[vertices.length];
+    		dfs(vertices[i], visited);
+
+    		for(int i = 0; i < visited.length; i++)
+    			if(visited[i] == false)
+    				return false;	
+    	}
+    	
+    	
+
+    }
+} 
+
+________________________________________
+
+PS13 #2
+
+public class LLNode<T extends Comparable<T>>  
+{
+    public T info;
+    public LLNode<T> next;
+
+}
+
+complete the following method to "split" the linked list in half:
+// splits the given list in half such that the return value is 
+// a reference to the first node of the second half. Also, the 
+// "next" field of the last node in the first half is set to null.
+
+public static <T extends Comparable<T> LLNode<T> split(LLNode<T> list)
+{
+	Node ptr = null;
+	Node first = null;
+	Node second = list;
+	int counter = 0;
+
+
+	while(ptr != null)
+	{
+		counter++;
+		ptr = ptr.next;
+	}
+
+	counter = counter / 2;
+
+	for(int i = 0; i < counter; i++)
+	{
+		first = second;
+		second = second.next;
+
+	}
+
+	first.next = null;
+
+	return second;
+}
+
+________________________________________
+
+PS13 #3
+
+// merge the lists l1 and l2 into a single linked list, whose
+// first node is referenced by the return value - no additional
+// linked list nodes are used
+// COMPLETE METHOD USING RECURSION, NO NEW NODES TO BE CREATED
+
+public static <T extends Comparable<T>> LLNode<T> merge(LLNode<T> l1, LLNode<T> l2) 
+{
+	if(L1 = null)
+		return L2;
+	if(L2 = null)
+		return L2;
+
+
+	if(L1.info.compareTo(L2) == 0)
+	{
+		L2.next = merge(L1.next, L2.next);
+		L1.next = L2;
+		return L1;
+	}
+
+	if(L1.info.compareTo(L2) < 0)
+	{
+		L1.next = merge(L1.next, L2);
+		return L1;
+	}
+
+	if(L1.info.compareTo(L2) > 0)
+	{
+		L2.next = merge(L1, L2.next);
+		return L2;
+	}
+
+
+
+}
+
+Using this merge solution, and the solution to the split in the previous problem, complete the mergesort implementation:
+// Sorts the input linked list using mergesort, and returns the front of
+// the sorted linked list. DOES NOT CREATE ANY ADDITIONAL NODES.
+public static <T extends Comparable<T> LLNode<T> mergesort(LLNode<T> list) 
+{
+	if(list = null || list.next == null)
+		return null;
+
+	Node second = split(list);
+
+	list = mergesort(list);
+	second = mergesort(second);
+
+	return merge(list, second);
+}
+
+________________________________________
+
+PS3 #6
+
+public class Node
+{
+    public int data;
+    public Node next;
+} 
+
+public static Node merge(Node frontL1, Node frontL2) 
+{
+	if(frontL1 = null)
+		return frontL2;
+
+	if(frontL2 = null)
+		return frontL1;	
+
+	if(frontL1.data == frontL2.data)
+       front1.next = merge(frontL1, frontL2);
+       return frontL1;
+
+    if(frontL1.data < frontL2.data)
+    	frontL1.next = merge(frontL1.next, frontL2);
+    	return frontL1;
+
+    if(frontL1.data > frontL2.data)
+    	frontL2.next = merge(frontL2.next, frontL1)
+    	return frontL2;
+}
+________________________________________
+class Neighbor
+{
+    public int vnum;
+    public Neighbor next;
+}
+
+class Graph 
+{
+    Neighbor[] adjlists;
+}
+
+public class Queue<T> 
+{
+    public Queue() {...}
+    public void enqueue(T item) {...}
+    public T dequeue() throws NoSuchElementException {...}
+    public boolean isEmpty() {...}
+}
+
+public int shortestPath(int x, int y)
+	{
+		boolean[] visited = new boolean[adjlists.length];
+		int[] back = new int[adjlists.length];
+		int endIndex = y;
+
+		int counter = 0;
+
+		Queue queue = new Queue;
+
+		queue.enqueue(x);
+
+		while(!queue.isEmpty)
+		{
+			int v = queue.dequeue;
+
+
+			for(Neighbor ptr = Neighbor[v]; ptr = null; ptr = ptr.next)
+			{
+				if(visited[ptr.vnum] == false)
+				{
+					back[vnum] = v;
+ 					queue.enqueue(ptr.vnum);
+					visited[ptr.vnum] = true;
+				}
+			}
+		}
+
+		Stack<Integer] stack = new Stack<>();
+
+		while(endIndex != x)
+		{
+			stack.push(y);
+			endIndex = back[endIndex];
+			counter++;
+		}
+
+		if(endIndex != x)
+			return -1;
+		else 
+			return counter;
+
+		
+	}
+
+
+   
+
+
+
+
+
+
+
