@@ -1,0 +1,32 @@
+ADT is a class in java
+ADT defines attributes and funtionality of the type
+object is an insance of an ADT or class
+A class is a blueprint of an object
+
+Picture p = new Picture("FileName");
+p is now a reference to a picture that is connected to the filename which is called extunctiating an object
+extunctiating is creating an instance of an object	
+Picture after new is the constructer 
+
+String S = new String("today is raining");
+
+S is the reference to an object of type string
+New - aollcates memory, calls the constructor which is a method that initialiazes the object	
+
+substring(x,y) is x invlusive and y exclusive so 1-4 but 4 isnt included
+
+
+
+
+
+
+
+
+
+
+
+Turtle
+	Instance Variables
+		- Position x,y 
+		- Facing Directionx
+	
